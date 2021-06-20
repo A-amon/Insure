@@ -184,6 +184,10 @@ header .nav__link {
   }
 }
 
+header .nav__link a:hover {
+  color: #2b272f;
+}
+
 header .nav__button {
   font-weight: inherit;
   margin: auto;
