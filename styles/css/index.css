@@ -233,6 +233,7 @@ section, footer {
 }
 
 .hero {
+  position: relative;
   background: #2d2640;
 }
 
@@ -242,6 +243,25 @@ section, footer {
     display: -ms-flexbox;
     display: flex;
     padding: 100px 100px;
+  }
+  .hero::before, .hero::after {
+    content: '';
+    background-repeat: no-repeat;
+    position: absolute;
+  }
+  .hero::before {
+    height: 504px;
+    width: 194px;
+    background: url("../../assets/images/bg-pattern-intro-left-desktop.svg");
+    bottom: -50%;
+    left: 0;
+  }
+  .hero::after {
+    height: 593px;
+    width: 436px;
+    background: url("../../assets/images/bg-pattern-intro-right-desktop.svg");
+    top: -25%;
+    right: 0;
   }
 }
 

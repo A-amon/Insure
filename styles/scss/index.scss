@@ -185,11 +185,32 @@ section, footer{
 }
 
 .hero{
+    position: relative;
     background: $dark-violet;
 
     @include laptop-query{
         display: flex;
         padding:$padding-vertical $padding-horizontal-medium;
+        &::before, &::after{
+            content:'';
+            background-repeat: no-repeat;
+            position: absolute;
+        }
+        &::before{
+            height:504px;
+            width: 194px;
+            background:url("../../assets/images/bg-pattern-intro-left-desktop.svg");
+            bottom:-50%;
+            left:0;
+        }
+
+        &::after{
+            height:593px;
+            width: 436px;
+            background:url("../../assets/images/bg-pattern-intro-right-desktop.svg");
+            top:-25%;
+            right:0;
+        }
     }
 
     @include laptop-l-query{
