@@ -1,0 +1,443 @@
+@import 'color.scss';
+@import 'reset.scss';
+@import 'typography.scss';
+@import 'breakpoints.scss';
+
+
+$padding-vertical:100px;
+$padding-horizontal: 25px;
+
+$padding-vertical-medium: $padding-vertical * 2;
+$padding-horizontal-medium: $padding-vertical;
+
+$padding-vertical-large: $padding-vertical * 3 - 50px;
+$padding-horizontal-large: $padding-vertical * 2 - 50px;
+
+$space-between: 1.5rem;
+
+.button{
+    color: inherit;
+    display: block;
+    border:2px solid $very-light-gray;
+    padding:1rem 1.5rem;
+    text-transform: uppercase;
+    max-width: fit-content;
+    font-weight: bold;
+
+    @include laptop-query{
+        padding:0.5rem 1.5rem;
+    }
+
+    &:hover{
+        background: $very-light-gray;
+        color:$dark-violet;
+    }
+}
+
+body{
+    font-family: $font-karla;
+}
+
+header{
+    position: sticky;
+    display:flex;
+    align-items: center;
+    height: 100px;
+    top:0;
+    background: $very-light-gray;
+    z-index:1;
+    padding:0 $padding-horizontal;
+    text-transform: uppercase;
+
+    @include laptop-query{
+        padding:0 $padding-horizontal-medium;
+    }
+
+    @include laptop-l-query{
+        padding:0 $padding-horizontal-large;
+    }
+
+    button{
+        margin-left: auto;
+        background-color: transparent;
+
+        @include laptop-query{
+            display: none;
+        }
+
+        &[data-open="false"] + nav{
+            display: none;
+        }
+
+        &[data-open="false"]{
+            .header__button--open{
+                display: block;
+            }
+            .header__button--close{
+                display: none;
+            }
+        }
+
+        &[data-open="true"]{
+            .header__button--open{
+                display: none;
+            }
+            .header__button--close{
+                display: block;
+            }
+        }
+
+        img{
+            pointer-events: none;
+        }
+    }
+
+    nav{
+        text-align: center;
+        position: absolute;
+        top:100%;
+        left:0;
+        height: calc(100vh - 100px);
+        width: 100%;
+        z-index: 1;
+        background:url("../../assets/images/bg-pattern-mobile-nav.svg"), $very-dark-violet;
+        background-repeat: no-repeat;
+        background-position: bottom;
+        background-size: 100%;
+        color:$very-light-gray;
+
+
+        @include laptop-query{
+            display: block !important;
+            background: none;
+            position: unset;
+            height: initial;
+            width: unset;
+            color:$dark-grayish-violet;
+            margin-left: auto;
+        }
+    }
+
+    .nav__links{
+        font-size:1.5rem;
+        padding:0 $padding-horizontal;
+
+        @include laptop-query{
+            display: flex;
+            align-items: center;
+            font-size:1rem;
+            font-weight: bold;
+            padding:0;
+        }
+    }
+
+    .nav__link{
+        margin:3rem 0;
+
+        @include laptop-query{
+            &:not(:last-child){
+                margin-right:1.5rem;
+            }
+        }
+    }
+
+    .nav__button{
+        @extend .button;
+        font-weight: inherit;
+        margin:auto;
+        max-width: initial;
+
+        @include laptop-query{
+            margin:unset;
+            color: $very-dark-violet;
+            border-color: $very-dark-violet;
+        }
+
+        &:hover{
+            background: $very-dark-violet;
+            color:$very-light-gray;
+        }
+    }
+}
+
+h1, h2{
+    font-family: $font-dm;
+    font-weight: normal;
+}
+
+
+h1{
+    font-size:3rem;
+    @include laptop-l-query{
+        font-size:4rem;
+    }
+}
+
+section, footer{
+    text-align: center;
+    @include laptop-query{
+        text-align: left;
+    }
+}
+
+.hero{
+    background: $dark-violet;
+
+    @include laptop-query{
+        display: flex;
+        padding:$padding-vertical $padding-horizontal-medium;
+    }
+
+    @include laptop-l-query{
+        padding:$padding-vertical $padding-horizontal-large;
+    }
+
+    picture{
+        position: relative;
+        @include laptop-query{
+            flex:1;
+            order:2;
+        }
+    }
+
+    img{
+        width: 100%;
+        object-fit: cover;
+        @include laptop-query{
+            position: absolute;
+            top:0;
+            left:0;
+        }
+    }
+
+    &__desc{
+        position: relative;
+        padding:$padding-vertical $padding-horizontal;
+        background:url("../../assets/images/bg-pattern-intro-left-mobile.svg");
+        background-repeat: no-repeat;
+        color: $very-light-gray;
+
+        @include laptop-query{
+            flex:1;
+            order:1;
+            background: none;
+            padding:0 $padding-horizontal 0 0;
+            &::before{
+                content:'';
+                display: block;
+                width:30%;
+                border-top:2px solid $dark-grayish-violet;
+            }
+        }
+
+        &::after{
+            content:'';
+            position: absolute;
+            bottom:-25%;
+            right:0;
+            height:330px;
+            width: 124px;
+            background-image: url("../../assets/images/bg-pattern-intro-right-mobile.svg");
+        
+            @include laptop-query{
+                display: none;
+            }
+        }
+    }
+
+    h1{
+        @include laptop-query{
+            margin-top:50px;
+        }
+    }
+
+    &__button{
+        @extend .button;
+        margin:auto;
+        margin-top:3rem;
+        @include laptop-query{
+            margin:3rem 0 0 0;
+        }
+    }
+}
+
+section:not(.hero), footer{
+    padding:$padding-vertical $padding-horizontal;
+    @include laptop-query{
+        padding:$padding-vertical $padding-horizontal-medium;
+
+        &.differences{
+            padding:$padding-vertical-medium $padding-horizontal-medium;
+        }
+        
+        &.work{
+            padding:$padding-vertical/2 $padding-horizontal-medium;
+        }
+    }
+
+    @include laptop-l-query{
+        padding:$padding-vertical $padding-horizontal-large;
+
+        &.differences{
+            padding:$padding-vertical-large $padding-horizontal-large $padding-vertical-large $padding-horizontal-large;
+        }
+    }
+}
+
+.differences{
+    color:$dark-violet;
+    h1{
+        display: block;
+        padding:1.5rem 0;
+        position: relative;
+
+        @include laptop-query{
+            padding:2.5rem 0;
+        }
+
+        &::before{
+            content:'';
+            display: block;
+            width: 50%;
+            height: 100%;
+            border-top:1px solid $grayish-blue;
+            margin: auto;
+            position: absolute;
+            top:0;
+            left:0;
+            right:0;
+
+            @include laptop-query{
+                margin:unset;
+                width: 30%;
+            }
+        }
+    }
+
+    img{
+        padding:1.5rem 0;
+    }
+
+    h2{
+        margin-bottom:1rem;
+    }
+
+    &__items{
+        @include laptop-query{
+            display: flex;
+        }
+    }
+
+    &__item{
+        margin:$space-between 0;
+        @include laptop-query{
+            margin:0 $space-between;
+        }
+    }
+}
+
+.work{
+    margin:$padding-vertical $padding-horizontal;
+    color:$very-light-gray;
+    background:url("../../assets/images/bg-pattern-how-we-work-mobile.svg"), $dark-violet;
+    background-repeat: no-repeat;
+    background-position:top right;
+    background-size: 50% 90%;
+
+    @include laptop-query{
+        display: flex;
+        align-items: center;
+        margin:0 $padding-horizontal-medium $padding-vertical-medium $padding-horizontal-medium;
+    }
+
+    @include laptop-l-query{
+        margin:0 $padding-horizontal-large $padding-vertical-large $padding-horizontal-large;
+    }
+
+    h1{
+        @include laptop-query{
+            width: 50%;
+        }
+    }
+
+    &__button{
+        @extend .button;
+        margin:auto;
+        margin-top:3rem;
+        @include laptop-query{
+            margin:unset;
+            margin-left: auto;
+        }
+    }
+}
+
+footer{
+    background: url("../../assets/images/bg-pattern-footer-mobile.svg"), $very-light-gray;
+    background-repeat: no-repeat;
+    background-size: 100%;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.footer{
+    &__header{
+        @include laptop-query{
+            display: flex;
+            align-items: center;
+            border-bottom: 1px solid $light-gray;
+        }
+    }
+
+    &__accounts{
+        display: flex;
+        justify-content: center;
+        padding: $space-between 0;
+        border-bottom: 1px solid $light-gray;
+
+        @include laptop-query{
+            margin-left: auto;
+            border-bottom: 0;
+        }
+    }
+
+    &__account{
+        display: block;
+    }
+
+    &__account a:hover{
+        filter:brightness(0%);
+    }
+
+    &__account:not(:last-child){
+        margin-right:1rem;
+    }
+
+    &__main{
+        @include laptop-query{
+            display: flex;
+        }
+    }
+}
+
+.links{
+    &__container{
+        @include laptop-query{
+            flex:1;
+        }
+    }
+
+    &__title{
+        display: block;
+        padding:$space-between 0;
+        color: $dark-grayish-violet;
+    }
+
+    &__item{
+        color:$dark-violet;
+        margin:1rem 0;
+    }
+
+    &__item a:hover{
+        text-decoration: underline;
+    }
+}
