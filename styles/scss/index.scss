@@ -364,7 +364,8 @@ section:not(.hero), footer{
 .work{
     margin:$padding-vertical $padding-horizontal;
     color:$very-light-gray;
-    background:url("../../assets/images/bg-pattern-how-we-work-mobile.svg"), $dark-violet;
+    background-color:$dark-violet;
+    background-image:url("../../assets/images/bg-pattern-how-we-work-mobile.svg");
     background-repeat: no-repeat;
     background-position:top right;
     background-size: 50% 90%;
@@ -372,6 +373,8 @@ section:not(.hero), footer{
     @include laptop-query{
         display: flex;
         align-items: center;
+        background-image:url("../../assets/images/bg-pattern-how-we-work-desktop.svg");
+        background-size:50% 100%;
         margin:0 $padding-horizontal-medium $padding-vertical-medium $padding-horizontal-medium;
     }
 
@@ -397,11 +400,16 @@ section:not(.hero), footer{
 }
 
 footer{
-    background: url("../../assets/images/bg-pattern-footer-mobile.svg"), $very-light-gray;
+    background-color: $very-light-gray;
+    background-image: url("../../assets/images/bg-pattern-footer-mobile.svg");
     background-repeat: no-repeat;
     background-size: 100%;
     text-transform: uppercase;
     font-weight: bold;
+    @include laptop-query{
+        background-image: url("../../assets/images/bg-pattern-footer-desktop.svg");
+        background-size:initial;
+    }
 }
 
 .footer{

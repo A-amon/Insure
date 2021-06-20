@@ -450,7 +450,8 @@ section:not(.hero), footer {
 .work {
   margin: 100px 25px;
   color: #fafafa;
-  background: url("../../assets/images/bg-pattern-how-we-work-mobile.svg"), #2d2640;
+  background-color: #2d2640;
+  background-image: url("../../assets/images/bg-pattern-how-we-work-mobile.svg");
   background-repeat: no-repeat;
   background-position: top right;
   background-size: 50% 90%;
@@ -464,6 +465,8 @@ section:not(.hero), footer {
     -webkit-box-align: center;
         -ms-flex-align: center;
             align-items: center;
+    background-image: url("../../assets/images/bg-pattern-how-we-work-desktop.svg");
+    background-size: 50% 100%;
     margin: 0 100px 200px 100px;
   }
 }
@@ -493,11 +496,19 @@ section:not(.hero), footer {
 }
 
 footer {
-  background: url("../../assets/images/bg-pattern-footer-mobile.svg"), #fafafa;
+  background-color: #fafafa;
+  background-image: url("../../assets/images/bg-pattern-footer-mobile.svg");
   background-repeat: no-repeat;
   background-size: 100%;
   text-transform: uppercase;
   font-weight: bold;
+}
+
+@media screen and (min-width: 768px) {
+  footer {
+    background-image: url("../../assets/images/bg-pattern-footer-desktop.svg");
+    background-size: initial;
+  }
 }
 
 @media screen and (min-width: 768px) {
