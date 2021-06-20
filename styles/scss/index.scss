@@ -138,10 +138,23 @@ header{
             &:not(:last-child){
                 margin-right:1.5rem;
             }
+
+            a:not(.nav__button):hover{
+                color:$very-dark-violet;
+            }
         }
 
-        a:hover{
-            color:$very-dark-violet;
+        a:not(.nav__button)::after{
+            content:'';
+            width: 0%;
+            display: block;
+            border-bottom:2px solid $very-light-gray;
+            transition:width 0.5s;
+            margin: auto;
+        }
+
+        a:hover::after{
+            width: 100%
         }
     }
 
@@ -155,11 +168,11 @@ header{
             margin:unset;
             color: $very-dark-violet;
             border-color: $very-dark-violet;
-        }
 
-        &:hover{
-            background: $very-dark-violet;
-            color:$very-light-gray;
+            &:hover{
+                background: $very-dark-violet;
+                color:$very-light-gray;
+            }
         }
     }
 }
@@ -174,6 +187,14 @@ h1{
     font-size:3rem;
     @include laptop-l-query{
         font-size:4rem;
+    }
+}
+
+p{
+    max-width: 60%;
+    margin: auto;
+    @include laptop-query{
+        max-width: 100%;
     }
 }
 
@@ -227,6 +248,7 @@ section, footer{
 
     img{
         width: 100%;
+        max-height: 600px;
         object-fit: cover;
         @include laptop-query{
             position: absolute;
